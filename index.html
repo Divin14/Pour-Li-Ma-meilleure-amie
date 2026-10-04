@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Pour Li, de la part de Jerli</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#fdf6f0;--soft:#e9d9e4;--gold:#ffc46b;--rose:#f4a9b8;--night:#17122e;
+--serif:'Fraunces',Georgia,serif;--sans:'Figtree',system-ui,sans-serif}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{font:400 1.08rem/1.75 var(--sans);color:var(--ink);background:hsl(255 40% 14%);transition:background .6s;padding:env(safe-area-inset-top) 0 env(safe-area-inset-bottom)}
+h1,h2,h3{font-family:var(--serif);font-weight:400;line-height:1.15}
+p{max-width:62ch;margin:0 auto 1.2em}
+.sun{position:fixed;left:50%;top:12vh;width:min(52vw,260px);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,#ffd98a,#ff9f6b 60%,transparent 72%);filter:blur(2px);opacity:.55;transform:translateX(-50%);pointer-events:none;z-index:0}
+main,header,footer{position:relative;z-index:1}
+section,header{padding:18vh 1.4rem 8vh;text-align:center}
+.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;align-items:center}
+.hero h1{font-size:clamp(3rem,13vw,7.5rem);font-style:italic}
+.hero .sub{font-family:var(--serif);font-size:1.25rem;color:var(--soft);max-width:30ch;margin:1rem auto 2rem}
+.count{display:flex;gap:1rem;justify-content:center;margin:1.2rem 0 2.2rem}
+.count div{min-width:4.2rem}
+.count b{display:block;font:600 2rem var(--serif);color:var(--gold)}
+.count span{font-size:.85rem;color:var(--soft)}
+button,.btn{font:600 1rem var(--sans);color:var(--night);background:var(--gold);border:0;border-radius:99px;padding:.9rem 1.8rem;cursor:pointer}
+button:focus-visible,summary:focus-visible{outline:3px solid var(--rose);outline-offset:3px}
+h2{font-size:clamp(1.9rem,6vw,3rem);margin-bottom:.4em}
+.chap{font-family:var(--serif);font-style:italic;color:var(--rose);margin-bottom:.6rem}
+.quote{font-family:var(--serif);font-style:italic;font-size:1.35rem;color:var(--gold);max-width:34ch;margin:2rem auto}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.6rem;max-width:1000px;margin:2.4rem auto}
+figure{background:rgba(255,255,255,.06);border-radius:18px 18px 40px 18px;overflow:hidden;text-align:left}
+figure:nth-child(even){border-radius:40px 18px 18px 18px}
+figure img,figure video{width:100%;aspect-ratio:4/5;object-fit:cover;display:block;background:#2a2147}
+.ph{aspect-ratio:4/5;display:grid;place-items:center;padding:1rem;text-align:center;color:var(--soft);font-size:.9rem;background:repeating-linear-gradient(45deg,#2a2147,#2a2147 12px,#2f2552 12px,#2f2552 24px)}
+figcaption{padding:1rem 1.2rem 1.3rem;font-size:.98rem}
+figcaption b{display:block;font:600 1.15rem var(--serif);color:var(--gold);margin-bottom:.2rem}
+.wide{max-width:520px;margin:2rem auto}
+.map{max-width:640px;margin:2rem auto}
+.map path{stroke:var(--gold);stroke-width:2.5;fill:none;stroke-dasharray:6 8;stroke-dashoffset:600;animation:draw 5s linear forwards paused}
+.map.on path{animation-play-state:running}
+@keyframes draw{to{stroke-dashoffset:0}}
+.letter{background:rgba(255,255,255,.07);border-radius:28px;max-width:720px;margin:2rem auto;padding:2rem 1.5rem;text-align:left}
+.letter p{max-width:none}
+.hide{display:none}
+details{max-width:640px;margin:.9rem auto;background:rgba(255,255,255,.07);border-radius:16px;text-align:left}
+summary{cursor:pointer;padding:1.1rem 1.3rem;font:600 1.15rem var(--serif);color:var(--gold)}
+details p{padding:0 1.3rem;margin-bottom:1.2rem}
+.seal{min-height:80svh;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.sign{font:italic 2rem var(--serif);color:var(--gold);margin-top:1.5rem}
+footer{text-align:center;padding:3rem 1rem 5rem;color:var(--soft);font-size:.9rem}
+.bit{position:fixed;top:-2rem;font-size:1.6rem;animation:fall 3.5s linear forwards;z-index:9;pointer-events:none}
+@keyframes fall{to{transform:translateY(110vh) rotate(360deg)}}
+#mus{position:fixed;right:1rem;bottom:calc(1rem + env(safe-area-inset-bottom));z-index:8;padding:.7rem 1rem;font-size:.9rem}
+.gate{position:fixed;inset:0;z-index:20;background:var(--night);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:2rem;transition:opacity 1s}
+.gate.out{opacity:0;pointer-events:none}
+.gate h2{font-style:italic}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.map path{animation:none;stroke-dashoffset:0}.bit{display:none}}
+#g1{grid-template-columns:minmax(0,290px);justify-content:center}
+#g1 figure{padding:10px;background:linear-gradient(145deg,var(--gold),var(--rose));border-radius:26px;box-shadow:0 14px 40px rgba(0,0,0,.45)}
+#g1 video,#g1 .ph{border-radius:18px;aspect-ratio:3/4;object-fit:cover}
+#g1 figcaption{color:var(--night)}#g1 figcaption b{color:var(--night)}
+summary::before{content:"♡ "}
+.hint{font-family:var(--serif);font-style:italic;color:var(--gold);font-size:1.2rem}
+.hero{background:linear-gradient(rgba(23,18,46,.45),rgba(23,18,46,.8)),var(--fond) center/cover no-repeat;text-shadow:0 2px 18px rgba(0,0,0,.55)}
+.sun{transition:opacity .6s}
+.fb{display:block;margin:2.5rem auto}
+:root{--fond:url("data:image/jpeg;base64,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")}
+.gate{background:linear-gradient(rgba(23,18,46,.3),rgba(23,18,46,.85)),var(--fond) center/cover no-repeat;text-shadow:0 2px 20px rgba(0,0,0,.6)}
+.gate h2{font-size:clamp(2.5rem,10vw,4.8rem);margin:.2em 0}
+.gate p{color:var(--ink);font-size:1.15rem}
+.gate .chap{letter-spacing:.3em;font-size:1.1rem}
+.heart{font-size:3rem;color:var(--rose);animation:beat 1.6s ease-in-out infinite}
+#open{margin-top:1.8rem;font-size:1.1rem;padding:1.1rem 2.4rem;text-shadow:none;animation:glow 2.4s ease-in-out infinite}
+@keyframes beat{0%,100%{transform:scale(1)}50%{transform:scale(1.18)}}
+@keyframes glow{0%,100%{box-shadow:0 0 12px rgba(255,196,107,.4)}50%{box-shadow:0 0 36px rgba(255,196,107,.9)}}
+@media(prefers-reduced-motion:reduce){.heart,#open{animation:none}}
+.gate #open{position:relative;overflow:hidden;display:inline-flex;align-items:center;gap:1rem;padding:.55rem 1.8rem .55rem .55rem;margin-top:2rem;background:rgba(255,255,255,.1);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);color:var(--ink);border:1px solid rgba(255,196,107,.75);border-radius:16px;font-size:.82rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;animation:none;box-shadow:0 10px 40px rgba(0,0,0,.4);transition:transform .3s,border-color .3s,background .3s}
+.gate #open .ic{display:grid;place-items:center;width:2.8rem;height:2.8rem;border-radius:12px;background:linear-gradient(135deg,#ffd98a,#ff9f6b);color:var(--night);font-size:1rem;padding-left:.15rem;transition:transform .3s}
+.gate #open::after{content:"";position:absolute;top:0;left:-60%;width:40%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.35),transparent);transform:skewX(-20deg);animation:sheen 3.6s ease-in-out infinite}
+.gate #open:hover,.gate #open:focus-visible{transform:translateY(-3px);background:rgba(255,255,255,.18);border-color:var(--gold)}
+.gate #open:hover .ic{transform:scale(1.1)}
+.gate .sm{margin-top:1rem;font-size:.85rem;letter-spacing:.12em;opacity:.8}
+@keyframes sheen{0%{left:-60%}55%,100%{left:130%}}
+@media(prefers-reduced-motion:reduce){.gate #open::after{animation:none}}
+.gate{overflow-y:auto;justify-content:flex-start;padding:max(1.5rem,env(safe-area-inset-top)) 1.2rem max(1.5rem,env(safe-area-inset-bottom));background:linear-gradient(rgba(35,14,45,.2),rgba(35,14,45,.85)),var(--fond) center/cover no-repeat}
+.gate>*{flex-shrink:0;max-width:100%}
+.gate>:first-child{margin-top:auto}.gate>:last-child{margin-bottom:auto}
+.gate h2{font-size:clamp(2rem,min(10vw,11vh),4.8rem)}
+.gate p{font-size:clamp(.95rem,2.6vw,1.15rem)}
+.gate #open{flex-shrink:0;min-height:3.9rem;max-width:92vw;font-size:clamp(.68rem,2.4vw,.85rem);letter-spacing:clamp(.08em,.6vw,.2em)}
+.gate #open .tx{text-align:left;line-height:1.35}
+.hero h1{font-size:clamp(2.4rem,min(12vw,13vh),7rem)}
+.hero>*{flex-shrink:0}
+.count{flex-wrap:wrap}
+.hero{background:linear-gradient(rgba(35,14,45,.2),rgba(35,14,45,.85)),var(--fond) center/cover no-repeat}
+@media(max-height:560px){.heart{font-size:2rem}.gate #open{margin-top:1rem}.gate .sm{margin-top:.6rem}}
+@media(max-width:420px){section,header{padding-left:1rem;padding-right:1rem}.gate #open{padding-right:1.1rem;gap:.7rem}}
+#nav{position:fixed;left:max(.8rem,env(safe-area-inset-left));top:max(.8rem,env(safe-area-inset-top));z-index:8}
+#navb{display:flex;gap:.5rem;align-items:center;padding:.65rem 1.1rem;font-size:.85rem;letter-spacing:.08em;color:var(--ink);background:rgba(23,18,46,.55);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border:1px solid rgba(255,196,107,.55);border-radius:14px}
+#navl{list-style:none;margin:.5rem 0 0;padding:.5rem;width:min(78vw,300px);max-height:70svh;overflow-y:auto;background:rgba(23,18,46,.82);-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px);border:1px solid rgba(255,196,107,.35);border-radius:16px;box-shadow:0 16px 40px rgba(0,0,0,.45)}
+#navl a{display:flex;gap:.8rem;padding:.75rem .9rem;border-radius:10px;color:var(--ink);text-decoration:none;font-size:.98rem}
+#navl a:hover,#navl a:focus-visible{background:rgba(255,196,107,.16);outline:none}
+#navl b{min-width:1.9rem;font:italic 600 .95rem var(--serif);color:var(--gold)}
+</style>
+</head>
+<body>
+<audio id="aud" loop preload="auto"><source src="audio.mp3"><source src="audio.m4a"><source src="audio.wav"><source src="audio.ogg"></audio>
+
+<div class="gate" id="gate">
+  <div class="heart" aria-hidden="true">♡</div>
+  <p class="chap">L &amp; J</p>
+  <h2>Li, ceci est pour toi.</h2>
+  <p class="chap" style="font-size:1rem">Pour Linda Ndahura</p>
+  <p style="max-width:32ch">Mets un peu de son, installe-toi, prends ton temps. Cette page est longue, comme notre histoire.</p>
+  <button id="open"><span class="ic">▶</span><span class="tx">Entrer dans notre histoire</span></button>
+  <p class="sm">Active le son pour vivre l'expérience</p>
+</div>
+
+<div class="sun" id="sun"></div>
+<button id="mus" class="hide" aria-label="Couper ou relancer la musique">♪ Musique</button>
+
+<nav id="nav" class="hide" aria-label="Chapitres">
+  <button id="navb" aria-expanded="false" aria-controls="navl"><span aria-hidden="true">☰</span> Chapitres</button>
+  <ul id="navl" class="hide"></ul>
+</nav>
+<header class="hero" id="top">
+  <p class="chap">Pour Linda Ndahura, ma précieuse Li</p>
+  <h1>Joyeux anniversaire</h1>
+  <p class="sub">Un manuscrit de souvenirs, de rires et de vérités, écrit par Jerli.</p>
+  <div class="count" id="count" aria-live="off"></div>
+  <a class="btn" href="#enfance" style="text-decoration:none">Commencer la lecture</a>
+</header>
+
+<main>
+<div id="p2" class="hide">
+<section id="merci">
+  <p class="chap">1er novembre</p>
+  <h2>Merci d'avoir fêté ça avec moi</h2>
+  <p>Merci, Li, d'avoir fêté ce jour avec moi, malgré la distance. Hier, nous n'étions pas dans la même ville, mais nous avons partagé le même ciel, la même journée et, je l'espère, les mêmes sourires. Tu as ouvert cette page, tu as pris le temps de la lire, de rire peut-être, de pleurer sûrement un peu. Pour moi, c'est le plus beau des cadeaux en retour.</p>
+  <p>Ces deux dernières années, la distance a essayé de nous séparer, et elle n'y est jamais parvenue. Chaque anniversaire passé loin l'un de l'autre nous rapproche de celui où nous le fêterons enfin ensemble, avec un gâteau, du LATO et des fous rires qui réveilleront tout le quartier.</p>
+  <p>Je te dois aussi une promesse pour l'année qui commence : je ferai tout pour être présent, même de loin. Des messages, des appels, des surprises, et le jour où je reviens, un tour de quartier à 18h, comme avant.</p>
+  <button id="coupon">Ouvrir mon dernier cadeau 🎁</button>
+  <div class="letter hide" id="cbox">
+    <p><b>BON POUR : un tour de quartier à 18h, main dans la main, avec deux LATO.</b></p>
+    <p>Valable dès mon retour à Bunia, sans date limite, non remboursable, non échangeable, et strictement réservé à Linda Ndahura. Signé : Jerli.</p>
+  </div>
+</section>
+</div>
+<div id="p1" class="hide">
+<section id="jour">
+  <p class="chap">Aujourd'hui, 31 octobre</p>
+  <h2>Joyeux anniversaire, ma Li</h2>
+  <p>Le voilà, le jour que j'attendais. Li, joyeux anniversaire ! Si tu lis ces lignes, c'est que le compte à rebours est arrivé à zéro et qu'une nouvelle année de ta vie commence. Alors avant tout le reste : merci d'être née. Le monde est plus doux avec toi dedans, et ma vie l'est encore plus.</p>
+  <p>Chaque 31 octobre a toujours été notre anniversaire à deux. Je me souviens des années où je courais te voir dès le matin, des petits cadeaux, des fous rires, du tour du quartier à 18h qui prenait ce jour-là un goût de fête. Cette année, je suis loin. Mais mon cœur est resté à Bunia, tout près de toi, et il fête cette journée avec toi.</p>
+  <p>Je te souhaite la santé, d'abord, parce que sans elle rien ne compte. Je te souhaite la paix, celle qu'on garde au fond de soi même quand tout autour est agité. Je te souhaite un amour vrai, qui te traite comme la reine que tu es. Je te souhaite de réussir tout ce que tu entreprends, et d'avoir toujours autour de toi des gens qui voient ta valeur. Et je te souhaite des rires, beaucoup de rires, comme ceux de nos 18h.</p>
+  <p>Ce soir, à 18h, regarde le ciel quand il deviendra orange. Je ferai pareil, de mon côté. Nous serons sous le même ciel, et pendant quelques minutes, c'est comme si nous marchions à nouveau main dans la main.</p>
+  <button id="bougie">Souffler la bougie 🕯️</button>
+  <p class="quote hide" id="voeu">Fais un vœu, Li. Je crois savoir lequel : que nous nous revoyions très vite.</p>
+  <p class="hint">Et reviens voir cette page demain, le 1er novembre : un dernier message t'y attendra.</p>
+</section>
+</div>
+<div id="p0">
+<section id="enfance">
+  <p class="chap">Chapitre I · L'enfance</p>
+  <h2>Avant que je sache écrire ton nom sans fautes</h2>
+  <p>Li, quand je ferme les yeux et que je remonte le temps, c'est d'abord une fraîcheur qui revient, comme l'odeur de la terre après la pluie à Bunia. Rien n'était calculé, rien n'était joué. Nous étions petits, le monde était immense, et nous le découvrions ensemble, à hauteur de rires. Je ne saurais pas te dire quel jour tu es devenue ma meilleure amie. Je crois que tu l'as toujours été, comme ces évidences qui n'ont pas de date de naissance.</p>
+  <p>Je te revois chez moi, en uniforme, mon téléphone entre les mains, un peu timide, curieuse de tout. Ce jour-là, sans le savoir, nous bâtissions déjà quelque chose qui résisterait aux années, aux disputes et aux kilomètres. La vidéo ci-dessous ne dure que quelques secondes, mais pour moi elle contient toute une enfance.</p>
+  <div class="grid" id="g1"></div>
+  <p>Et puis l'amitié a pris une couleur de plus. Nous sommes tombés amoureux l'un de l'autre sans jamais devenir un couple. Tu as été la première fille que j'ai embrassée, et ce premier baiser, je ne l'ai jamais oublié : sa douceur, sa maladresse, notre fou rire juste après. Il y en a eu d'autres, volés entre deux silences, et je les garde comme un petit trésor qui n'appartient qu'à nous. Ils n'ont jamais abîmé notre amitié. Ils nous ont appris qu'on peut s'aimer fort sans rien perdre.</p>
+  <p>Bien sûr, il y a eu les orages. Des jours de bouderie, des semaines sans un mot, la fierté plantée entre nous comme un mur. Et chaque fois, la même magie : un regard, un sourire en coin, et tout s'effaçait. Nous sommes toujours revenus l'un vers l'autre, plus proches qu'avant. C'est peut-être la plus belle preuve de ce que nous sommes.</p>
+  <p class="quote">« Certaines premières fois ne s'écrivent pas. Elles se gardent au fond du cœur. »</p>
+</section>
+
+<section id="rituels">
+  <p class="chap">Chapitre II · Nos rituels</p>
+  <h2>18h, c'était notre heure</h2>
+  <p>Chaque jour, quand la chaleur retombait et que le ciel virait à l'orange, le quartier devenait notre piste. Main dans la main, sans destination, sans raison, juste parce que le temps passé ensemble valait mieux que n'importe quel programme. On refaisait le monde, on critiquait tes petits amis, puis mes petites amies, on riait de tout et de rien. Les voisins nous regardaient passer comme on regarde passer une habitude qui fait du bien.</p>
+  <p>Il y avait aussi la route de l'école. On s'attendait au bord du chemin pour partir ensemble, et je t'accompagnais jusqu'à ton école avant de rejoindre la mienne, malgré la distance. Personne ne me l'avait demandé. C'était simplement évident, comme respirer.</p>
+  <p>Et le LATO ! Quand l'envie de yaourt te prenait, personne au monde ne pouvait t'arrêter. Quand ton petit ami t'en offrait, tu en réclamais toujours deux : un pour toi, un pour moi. Grâce à toi, j'ai appris à aimer ça. Grâce à toi, j'ai appris à aimer beaucoup de choses, d'ailleurs.</p>
+  <p>Je pense aussi à tes jours de maladie. Ma poitrine devenait ton oreiller, mon lit ton hôpital, et tu ne voulais rien d'autre. Si je refusais, tu te fâchais ou tu devenais triste. Une journée entière à ne rien faire, toi endormie contre mon cœur, c'était pour moi la plus belle des journées. Ma capricieuse à moi.</p>
+</section>
+
+<section id="mamans">
+  <p class="chap">Chapitre III · Les témoins</p>
+  <h2>La clôture, ta maman et mon père</h2>
+  <p>Comment ne pas en rire aujourd'hui ? Le jour où ta maman nous a trouvés, sa colère m'a laissé une peur qui dure encore. Mon père, lui, nous a surpris à 20h devant la clôture, furieux, mais sans un mot. Un autre jour, à 5h du matin. Toujours sans un mot. Son silence faisait plus de bruit qu'un orage. Depuis, tu as peur de mon père, et moi de ta mère : nous sommes quittes.</p>
+  <p>Et pourtant, aucune de ces frayeurs ne nous a jamais séparés. Le lendemain, nous étions à nouveau là, la clôture entre nous comme un vieux complice.</p>
+  <p class="quote">Deux familles, deux peurs, une seule complicité.</p>
+</section>
+
+<section id="portraits">
+  <p class="chap">Chapitre IV · Toi, telle que je te vois</p>
+  <h2>Mille visages, une seule lumière</h2>
+  <p>Tu as cette façon rare d'être forte et douce à la fois : une présence qui impose le respect quand il le faut, et une tendresse qui désarme tout le reste du temps. Tu es sûre de toi, et pourtant tu sais rire de toi-même. Tu as de l'élégance, du caractère, de la folie, et surtout ce cœur qui ne triche pas.</p>
+  <div class="grid" id="g3"></div>
+  <p>Ton sourire est celui que j'ai toujours préféré. Il a le pouvoir d'éclairer la journée la plus sombre d'un seul coup. Et ta petite folie contagieuse, ta démarche, ton allure : j'avoue que je suis parfois presque jaloux de celui qui a la chance d'être ton amoureux. Voici trois instants que je chéris : tu y bouges, tu ris, tu vis, et c'est là que tu es la plus toi.</p>
+  <div class="grid" id="g5"></div>
+</section>
+
+<section id="distance">
+  <p class="chap">Chapitre V · La distance</p>
+  <h2>De Bunia à Goma</h2>
+  <p>Le mercredi 25 septembre 2024, j'ai quitté Bunia pour Goma. C'était trop dur pour nous deux, et plus dur pour moi que tu ne l'as su. La veille, nous nous étions retrouvés, et je n'ose pas imaginer le nombre de câlins que nous nous sommes donnés. J'ai pleuré. Tu ne le sais pas encore, mais tu vas le lire plus bas.</p>
+  <svg class="map" id="map" viewBox="0 0 600 220" role="img" aria-label="Chemin de Bunia à Goma">
+    <path d="M70 60 C 200 190, 400 10, 530 150"/>
+    <circle cx="70" cy="60" r="9" fill="#f4a9b8"/><circle cx="530" cy="150" r="9" fill="#ffc46b"/>
+    <text x="70" y="42" fill="#fdf6f0" font-family="serif" font-size="20" text-anchor="middle">Bunia · toi</text>
+    <text x="530" y="188" fill="#fdf6f0" font-family="serif" font-size="20" text-anchor="middle">Goma · moi</text>
+  </svg>
+  <p>Mais la vie nous a offert des retours. En octobre 2025, je suis revenu à Bunia. En mai 2026 encore. Pendant ces deux voyages, j'avais des choses à faire, mais tu étais ma priorité, toujours. Le quartier s'est remis à parler : « son amoureux est revenu », « le tour a recommencé ». Cela nous faisait rire. On critiquait tes petits amis ensemble, puis mes petites amies, comme avant.</p>
+  <p>Chaque 31 octobre a toujours été notre anniversaire à deux, et le mien aussi. En 2024, en 2025 et maintenant en 2026, c'est la distance qui s'assoit entre nous à table. J'ai mal. Mais je garde une certitude : nous nous reverrons. Deux comme toi, je n'en trouverai pas.</p>
+  <p>Je me surprends à compter les jours, les kilomètres, les messages. Je pense à ta voix, à ta façon de rire d'abord avec les yeux, à nos silences qui ne pesaient jamais. Goma est belle, mais elle n'a ni ton rire ni tes tours de quartier de 18h. Alors je garde un petit coin du cœur pour Bunia, et c'est là que tu habites.</p>
+  <p>La distance m'a appris une chose : on ne mesure pas l'amitié en kilomètres, mais en retours. Tu es toujours ma première pensée quand une bonne nouvelle arrive, et la première personne que je voudrais appeler quand une mauvaise arrive. Je sais que le jour où nous nous reverrons, nous marcherons main dans la main comme si le temps n'avait rien changé. Parce qu'avec nous, il n'a jamais rien changé.</p>
+</section>
+
+<section id="lettre">
+  <p class="chap">Chapitre VI · Les cartes</p>
+  <h2>Ce que je garde, et ce que je ne t'ai jamais dit</h2>
+  <p>Il y a des objets qu'on garde toute une vie. Quand je maîtrisais à peine Word, je t'avais fait une carte, et j'en conserve toujours une copie dans mon ordinateur à Bunia. Mais l'objet le plus précieux que j'aie ici, à Goma, c'est la carte postale que tu m'as offerte pour mon anniversaire. Elle voyage avec moi, dans ma valise. Je la garde jalousement, comme on garde ce qu'on aime le plus au monde.</p>
+  <div class="grid" id="g4"></div>
+  <p>Chaque mot écrit de ta main est une preuve que j'ai compté pour toi. Je les relis souvent, surtout les soirs où Goma semble très loin de Bunia. Personne ne me connaît comme toi, Li.</p>
+  <button id="ouvrirLettre">Lire la lettre</button>
+  <div class="letter hide" id="lettreBox">
+    <p>Li,</p>
+    <p>Il y a un secret que je garde depuis le 24 septembre 2024. La veille de mon départ, quand nous nous sommes dit au revoir, j'ai pleuré. Tu ne l'as jamais su. Je voulais rester fort pour nous deux, pour que tu ne partes pas avec le poids de mes larmes. Aujourd'hui, je te le dis : j'ai pleuré comme un enfant, et j'ai eu mal comme jamais, parce que je savais que je laissais derrière moi la personne qui me connaissait le mieux au monde.</p>
+    <p>Nous nous sommes aimés d'une manière que peu de gens comprennent : sans nom, sans contrat, sans jamais être en couple, et pourtant sans rien abîmer. Nous avons échangé des baisers, des câlins, des promesses silencieuses, et il ne s'est jamais rien brisé. Je crois que c'est notre plus grande force : la confiance, les rires, la certitude d'être chez soi quand l'autre est là.</p>
+    <p>Tu veux savoir combien tu comptes pour moi ? Plus que ce que je saurai jamais écrire. Tu comptes comme une famille que j'aurais choisie. Tu es celle à qui je pense en me levant, celle que je cherche du regard dans mes souvenirs, celle dont je partage encore les victoires dans ma tête. Tu as vu mes colères, mes caprices, mes silences, mes peurs, et tu es toujours restée. Peu de gens ont ce courage.</p>
+    <p>Si je pouvais tout recommencer, si la vie me redonnait la page blanche du premier jour, je referais exactement le même chemin : les mêmes tours de quartier à 18h, le même LATO partagé en deux, les mêmes fous rires devant la clôture, les mêmes disputes suivies des mêmes réconciliations. Et je n'y mettrais personne d'autre que toi. Personne. Il n'y a jamais eu, et il n'y aura jamais, une deuxième Li.</p>
+    <p>Cette année, je n'ai pas été le premier à te souhaiter ton anniversaire, le 1er octobre, comme chaque année. Ce n'était pas un oubli. Je voulais te préparer quelque chose de plus grand que quelques mots envoyés trop vite. Chaque ligne de cette page est une marche à 18h que je fais avec toi, de loin.</p>
+    <p>Merci d'avoir été ma première en tant de choses. Merci pour les 18h, pour le LATO en double, pour les crises et pour les réconciliations, pour les mains tenues sans raison, pour les nuits où tu dormais sur ma poitrine, pour avoir pris soin de moi comme de ton bébé. Merci de m'avoir appelé Jerli. Merci d'être restée.</p>
+    <p>Où que tu sois, quoi que tu deviennes, souviens-toi que quelqu'un, quelque part, t'aime de tout son cœur, sans condition, et qu'il reviendra toujours vers toi.</p>
+  </div>
+</section>
+
+<section id="promesses">
+  <p class="chap">Chapitre VII · Mes promesses</p>
+  <h2>Ce que je te promets</h2>
+  <p class="hint">Li, clique sur chaque promesse pour l'ouvrir : un message est caché dans chacune.</p>
+  <details><summary>Un soutien inébranlable</summary><p>Où que la vie nous mène, je serai l'épaule sur laquelle tu pourras te reposer sans hésiter. Quand tu seras fatiguée, appelle-moi. Quand tu auras peur, appelle-moi. Quand tu auras juste envie de te taire à côté de quelqu'un, appelle-moi aussi. Tu as pris soin de moi comme une vraie maman pendant des années ; il est temps que je te rende un peu de cette tendresse. Ni Goma, ni Bunia, ni aucune distance ne me retiendront quand tu auras besoin de moi.</p></details>
+  <details><summary>Le gardien de tes confidences</summary><p>Tes secrets, tes doutes, tes rêves, tes chagrins : tout ce que tu m'as confié reste en sécurité auprès de moi, comme toujours. Je ne les raconterai à personne, pas même à moi-même dans mes mauvais jours. Tu pourras toujours me dire ce que tu n'oses dire à personne d'autre, sans crainte d'être jugée, parce que je t'ai connue assez longtemps pour t'aimer entière, avec tes qualités et tes défauts.</p></details>
+  <details><summary>Applaudir toutes tes victoires</summary><p>Je serai au premier rang pour chaque diplôme, chaque projet, chaque réussite, même la plus petite. Et les jours où tu douteras de toi, je serai celui qui te rappellera ta valeur, ta force, ta beauté, et tout ce que tu as déjà surmonté. Tu mérites des applaudissements bien plus forts que ceux que le monde te donne. Je me chargerai de faire du bruit pour toi.</p></details>
+  <details><summary>Fidèle à notre passé</summary><p>Ni le temps ni la distance n'effaceront notre enfance. Je garderai ta carte postale dans ma valise, la carte Word dans mon ordinateur, et tous nos souvenirs dans mon cœur. Je continuerai à critiquer tes petits amis, avec tout mon amour, et tu continueras à critiquer mes petites amies. Nos anniversaires resteront nos anniversaires, à deux, même séparés par des centaines de kilomètres.</p></details>
+  <details><summary>Revenir</summary><p>Je te promets de revenir à Bunia, et que le tour de quartier de 18h reprendra, main dans la main, avec deux LATO. Le quartier se remettra à dire que ton amoureux est de retour, et cette fois je ne repartirai pas sans t'avoir serrée très fort. D'ici là, chaque soir à 18h, penses-y : je marche avec toi, en pensée.</p></details>
+</section>
+
+<section class="seal" id="sceau">
+  <p class="chap">Le sceau final</p>
+  <h2>Joyeux anniversaire, Li</h2>
+  <p>Merci d'exister et d'avoir illuminé mon parcours depuis le tout début. Rien de ce que nous avons partagé n'est insignifiant : chaque rire, chaque marche à 18h, chaque pot de LATO, chaque baiser, chaque larme et chaque mot a bâti ce trésor qu'est notre histoire. Reste cette personne rayonnante, forte et merveilleuse.</p>
+  <p>Tu trouveras toujours chez moi un refuge, une écoute et une tendresse qui ne s'éteindra pas. Et quand les mois auront passé, que le tour du quartier reprendra à 18h, sache que je serai là, avec deux LATO.</p>
+  <button id="fete">Ouvrir le message ultime</button>
+  <p class="sign hide" id="sign">Je t'aime de tout mon cœur.<br>Jerli</p>
+  <p class="hint" style="margin-top:2rem">Li, reviens voir cette page quand le compte à rebours sera à 00 : une surprise t'y attendra.</p>
+</section>
+</div>
+</main>
+
+<footer>Linda Ndahura &amp; Jérémie Ngbape Divin · Une complicité qui dure</footer>
+
+<script>
+const now0=new Date(),qp=new URLSearchParams(location.search).get('phase');
+const P=qp!==null?+qp:(now0<new Date(2026,9,31)?0:now0<new Date(2026,10,1)?1:2);
+const IMG=['jpg','jpeg','png','webp'],VID=['mp4','mov','webm','mkv'];
+const MEDIA={
+ g1:[['v','video4',"L'enfance",'Quelques secondes qui contiennent toute une enfance.']],
+ g3:[['i','image1','La responsable, telle une vraie maman',"Regarde-toi dans ta robe en pagne, l'air si responsable qu'on te confierait tout un village ! Tu as toujours pris soin de moi comme de ton bébé à toi toute seule : les conseils, les gronderies, les attentions de grande sœur, de maman, d'amie. Même quand je boudais, tu savais exactement quoi dire. Merci d'avoir été ma protectrice, même les jours où je croyais que c'était moi qui te protégeais."],
+     ['i','image2','Version chic, version star',"Oh là là, madame est de sortie ! Chic, stylée, élégante… et cette coiffure, que j'aime beaucoup, je l'avoue. Dis-moi la vérité : tu as passé plus de temps devant le miroir que devant tes cahiers ? Je plaisante, évidemment, elle te va à merveille. Fais attention, à ce rythme tu vas faire tourner toutes les têtes du quartier, et ton amoureux devra monter la garde."],
+     ['i','image3','Une femme de valeur',"Encore en pagne, et encore tellement respectée. Tu comptes pour beaucoup de gens autour de toi : on vient te chercher, on t'écoute, on s'appuie sur toi. Parfois, certains ne te comprennent pas, ou te mettent de côté, mais toi tu sais exactement qui tu es et où est ta place. Cette dignité tranquille, c'est ta plus belle parure. Pour moi, comme pour beaucoup d'autres, tu es une femme valeureuse."]],
+ g5:[['v','video1','Tes yeux, tes lèvres',"Tes yeux, petits comme je les aime, brillent d'une lumière qui me fait toujours baisser la garde. Et tes lèvres, si belles… je comprends pourquoi j'aimais tant t'embrasser. Quelques secondes de vidéo suffisent pour que tout me revienne, et j'avoue que je la regarde plus souvent que je ne le dis."],
+     ['v','video2','Ton sourire',"Ton sourire est un soleil de poche : il éclaire une pièce, une journée, un quartier tout entier. Il m'a consolé, rassuré, désarmé. Quand tu souris, même mes soucis demandent la permission de partir. Garde-le toujours, ne laisse personne te le voler."],
+     ['v','video3','Ta folie, ta démarche',"Ta folie contagieuse, ta démarche pleine d'allure, ta silhouette élégante : tout ça fait de toi une apparition. Un conseil d'ami : dis à ton homme de bien te surveiller, parce que je risque de te piquer à lui. Bon, rassure-toi, je plaisante… à moitié."]],
+ g4:[['i','carte1','La carte postale, recto','Ton cadeau d\'anniversaire. Je la garde jalousement.'],
+     ['i','carte2','La carte postale, verso','Tes mots, de ta main, que je relis encore.']]};
+function tryExt(el,n,ex,i){el.onerror=()=>{if(i+1<ex.length)tryExt(el,n,ex,i+1);else{const p=document.createElement('div');p.className='ph';p.textContent='Dépose '+n+' ici';el.replaceWith(p)}};el.src=n+'.'+ex[i]}
+Object.entries(MEDIA).forEach(([id,list])=>{
+  const g=document.getElementById(id);
+  list.forEach(([t,n,c,d])=>{
+    const f=document.createElement('figure'),v=t==='v',el=document.createElement(v?'video':'img');
+    if(v){el.controls=true;el.playsInline=true;el.preload='metadata'}else{el.alt=c}
+    tryExt(el,n,v?VID:IMG,0);
+    f.appendChild(el);
+    f.insertAdjacentHTML('beforeend','<figcaption><b>'+c+'</b>'+d+'</figcaption>');
+    g.appendChild(f);
+  });
+});
+
+const aud=document.getElementById('aud'),mus=document.getElementById('mus');
+document.getElementById('open').onclick=()=>{
+  document.getElementById('gate').classList.add('out');
+  mus.classList.remove('hide');document.getElementById('nav').classList.remove('hide');if(P===1)setTimeout(()=>confetti(50),700);
+  aud.play().catch(()=>{});
+};
+mus.onclick=()=>aud.paused?aud.play():aud.pause();
+
+// Compte à rebours jusqu'au 31 octobre 2026
+const cd=document.getElementById('count');
+const target=new Date(2026,9,31,0,0,0);
+const calc=()=>{const n=new Date();return n<new Date(2026,9,31)?0:n<new Date(2026,10,1)?1:2};
+function tick(){
+  if(qp===null&&calc()!==P){try{sessionStorage.setItem('auto','1')}catch(e){}location.reload();return}
+  let s=Math.max(0,Math.floor((target-new Date())/1000));
+  const d=Math.floor(s/86400);s%=86400;
+  const h=Math.floor(s/3600);s%=3600;
+  const m=Math.floor(s/60);
+  if(P>0){cd.innerHTML='<b style="font:600 1.6rem var(--serif);color:var(--gold)">'+(P===1?'C\'est aujourd\'hui, Li !':'Joyeux anniversaire, Li ♡')+'</b>';return}
+  cd.innerHTML=[[d,'jours'],[h,'heures'],[m,'minutes'],[s,'secondes']].map(x=>'<div><b>'+x[0]+'</b><span>'+x[1]+'</span></div>').join('');
+}
+tick();setInterval(tick,1000);
+
+// Le ciel passe du crépuscule à la nuit, le soleil descend
+const sun=document.getElementById('sun');
+function sky(){
+  const p=Math.min(1,scrollY/Math.max(1,document.body.scrollHeight-innerHeight));
+  document.body.style.background='hsl('+(255+p*20)+' 40% '+(22-p*12)+'%)';
+  sun.style.top=(12+p*70)+'vh';sun.style.opacity=scrollY<innerHeight*.6?0:.6-p*.4;
+}
+addEventListener('scroll',sky,{passive:true});sky();
+
+new IntersectionObserver((e,o)=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('on');o.unobserve(x.target)}}),{threshold:.4}).observe(document.getElementById('map'));
+
+document.getElementById('ouvrirLettre').onclick=e=>{
+  document.getElementById('lettreBox').classList.remove('hide');e.target.classList.add('hide');
+};
+document.getElementById('fete').onclick=e=>{
+  document.getElementById('sign').classList.remove('hide');e.target.classList.add('hide');
+  if(matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+  for(let i=0;i<36;i++){const b=document.createElement('span');b.className='bit';b.textContent=['🎂','🥛','💛','✨','🎉'][i%5];b.style.left=Math.random()*100+'vw';b.style.animationDelay=Math.random()*1.5+'s';document.body.appendChild(b);setTimeout(()=>b.remove(),5500)}
+};
+
+function confetti(n=36){if(matchMedia('(prefers-reduced-motion:reduce)').matches)return;for(let i=0;i<n;i++){const b=document.createElement('span');b.className='bit';b.textContent=['🎂','🥛','💛','✨','🎉'][i%5];b.style.left=Math.random()*100+'vw';b.style.animationDelay=Math.random()*1.5+'s';document.body.appendChild(b);setTimeout(()=>b.remove(),5500)}}
+function fold(id,label){const b=document.getElementById(id);b.classList.add('hide');const btn=document.createElement('button');btn.className='fb';btn.textContent=label;btn.onclick=()=>{b.classList.toggle('hide');btn.textContent=b.classList.contains('hide')?label:'Masquer ce message'};b.before(btn)}
+const first=document.querySelector('.hero .btn');
+if(P===0){document.getElementById('p0').classList.remove('hide')}
+if(P===1){document.getElementById('p1').classList.remove('hide');fold('p0','Relire le message d\'avant');first.href='#jour'}
+if(P===2){document.getElementById('p2').classList.remove('hide');fold('p1','Relire le message d\'anniversaire');fold('p0','Relire le message d\'avant');first.href='#merci'}
+if(P>0){document.querySelector('.hero .sub').textContent=P===1?'C\'est aujourd\'hui, Li. Ce message est pour toi.':'Merci d\'avoir fêté ça avec moi.';first.textContent='Lire mon message'}
+document.getElementById('bougie').onclick=e=>{e.target.classList.add('hide');document.getElementById('voeu').classList.remove('hide');confetti(50)};
+document.getElementById('coupon').onclick=e=>{e.target.classList.add('hide');document.getElementById('cbox').classList.remove('hide');confetti(30)};
+
+(function(){
+  const L=P===0?[['','Accueil','top'],['I','L\'enfance','enfance'],['II','Nos rituels','rituels'],['III','Les témoins','mamans'],['IV','Toi, telle que je te vois','portraits'],['V','La distance','distance'],['VI','Les cartes','lettre'],['VII','Mes promesses','promesses'],['♡','Le sceau final','sceau']]
+   :P===1?[['','Accueil','top'],['♡','Aujourd\'hui','jour']]:[['','Accueil','top'],['♡','Merci','merci']];
+  const ul=document.getElementById('navl'),b=document.getElementById('navb');
+  L.forEach(([n,t,id])=>{const li=document.createElement('li');li.innerHTML='<a href="#'+id+'"><b>'+n+'</b><span>'+t+'</span></a>';ul.appendChild(li)});
+  const set=o=>{ul.classList.toggle('hide',!o);b.setAttribute('aria-expanded',o)};
+  b.onclick=()=>set(ul.classList.contains('hide'));
+  ul.onclick=e=>{if(e.target.closest('a'))set(false)};
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')set(false)});
+  document.addEventListener('click',e=>{if(!e.target.closest('#nav'))set(false)});
+})();
+
+document.addEventListener('visibilitychange',()=>{if(!document.hidden)tick()});
+try{if(sessionStorage.getItem('auto')){sessionStorage.removeItem('auto');document.getElementById('open').click()}}catch(e){}
+</script>
+</body>
+</html>
