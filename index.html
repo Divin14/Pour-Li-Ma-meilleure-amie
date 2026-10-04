@@ -292,7 +292,7 @@ document.getElementById('open').onclick=()=>{
   mus.classList.remove('hide');document.getElementById('nav').classList.remove('hide');if(P===1)setTimeout(()=>confetti(50),700);
   want=true;aud.play().catch(()=>{mus.classList.add('need');mus.textContent='▶ Activer la musique'});
 };
-mus.onclick=()=>{mus.classList.remove('need');if(aud.paused){want=true;aud.play().catch(()=>{mus.textContent='✖ Audio indisponible'})}else{want=false;aud.pause()}};
+mus.onclick=()=>{mus.classList.remove('need');if(aud.paused){want=true;aud.play().catch(e=>{mus.textContent='✖ Audio ('+((e&&e.name)||'erreur')+')'})}else{want=false;aud.pause()}};
 
 // Compte à rebours jusqu'au 31 octobre 2026
 const cd=document.getElementById('count');
@@ -305,7 +305,7 @@ function tick(){
   const h=Math.floor(s/3600);s%=3600;
   const m=Math.floor(s/60);
   if(P>0){cd.innerHTML='<b style="font:600 1.6rem var(--serif);color:var(--gold)">'+(P===1?'C\'est aujourd\'hui, Li !':'Joyeux anniversaire, Li ♡')+'</b>';return}
-  cd.innerHTML=[[d,'jours'],[h,'heures'],[m,'minutes'],[s,'secondes']].map(x=>'<div><b>'+x[0]+'</b><span>'+x[1]+'</span></div>').join('');
+  cd.innerHTML=[[d,'jours'],[h,'heures'],[m,'minutes'],[s%60,'secondes']].map(x=>'<div><b>'+x[0]+'</b><span>'+x[1]+'</span></div>').join('');
 }
 tick();setInterval(tick,1000);
 
@@ -361,6 +361,26 @@ aud.addEventListener('playing',()=>{mus.classList.remove('need');mus.textContent
 aud.addEventListener('pause',()=>{if(!mus.classList.contains('need'))mus.textContent='▶ Musique'});
 loadAud(0);
 try{if(sessionStorage.getItem('auto')){sessionStorage.removeItem('auto');document.getElementById('open').click()}}catch(e){}
+
+// Musique de fond <-> vidéos
+let resumeMusic=false;
+document.addEventListener('play',e=>{
+  const v=e.target;if(v.tagName!=='VIDEO')return;
+  document.querySelectorAll('video').forEach(o=>{if(o!==v&&!o.paused)o.pause()});
+  if(!aud.paused){resumeMusic=true;aud.pause()}
+},true);
+const musicBack=e=>{
+  if(e.target.tagName!=='VIDEO'||!resumeMusic)return;
+  if([...document.querySelectorAll('video')].some(v=>!v.paused&&!v.ended))return;
+  resumeMusic=false;want=true;aud.play().catch(()=>{});
+};
+document.addEventListener('pause',musicBack,true);
+document.addEventListener('ended',musicBack,true);
+const vio=new IntersectionObserver(es=>es.forEach(x=>{
+  const v=x.target;
+  if(!x.isIntersecting&&!v.paused&&!document.fullscreenElement&&!v.webkitDisplayingFullscreen)v.pause();
+}),{threshold:.2});
+document.querySelectorAll('video').forEach(v=>vio.observe(v));
 </script>
 </body>
 </html>
