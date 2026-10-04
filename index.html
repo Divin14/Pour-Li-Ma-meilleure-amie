@@ -102,10 +102,11 @@ summary::before{content:"♡ "}
 #navl a{display:flex;gap:.8rem;padding:.75rem .9rem;border-radius:10px;color:var(--ink);text-decoration:none;font-size:.98rem}
 #navl a:hover,#navl a:focus-visible{background:rgba(255,196,107,.16);outline:none}
 #navl b{min-width:1.9rem;font:italic 600 .95rem var(--serif);color:var(--gold)}
+#mus.need{animation:glow 1.6s ease-in-out infinite}
 </style>
 </head>
 <body>
-<audio id="aud" loop preload="auto"><source src="audio.mp3"><source src="audio.m4a"><source src="audio.wav"><source src="audio.ogg"></audio>
+<audio id="aud" loop preload="auto"></audio>
 
 <div class="gate" id="gate">
   <div class="heart" aria-hidden="true">♡</div>
@@ -289,9 +290,9 @@ const aud=document.getElementById('aud'),mus=document.getElementById('mus');
 document.getElementById('open').onclick=()=>{
   document.getElementById('gate').classList.add('out');
   mus.classList.remove('hide');document.getElementById('nav').classList.remove('hide');if(P===1)setTimeout(()=>confetti(50),700);
-  aud.play().catch(()=>{});
+  want=true;aud.play().catch(()=>{mus.classList.add('need');mus.textContent='▶ Activer la musique'});
 };
-mus.onclick=()=>aud.paused?aud.play():aud.pause();
+mus.onclick=()=>{mus.classList.remove('need');if(aud.paused){want=true;aud.play().catch(()=>{mus.textContent='✖ Audio indisponible'})}else{want=false;aud.pause()}};
 
 // Compte à rebours jusqu'au 31 octobre 2026
 const cd=document.getElementById('count');
@@ -351,6 +352,14 @@ document.getElementById('coupon').onclick=e=>{e.target.classList.add('hide');doc
 })();
 
 document.addEventListener('visibilitychange',()=>{if(!document.hidden)tick()});
+
+let want=false;
+const AUD=['mp3','m4a','wav','ogg','aac','opus','mpeg','flac','weba','MP3','M4A','WAV'];
+function loadAud(i){if(i>=AUD.length){mus.textContent='♪ audio introuvable';return}aud.onerror=()=>loadAud(i+1);aud.src='audio.'+AUD[i];aud.load()}
+aud.addEventListener('canplay',()=>{if(want&&aud.paused)aud.play().catch(()=>{mus.classList.add('need');mus.textContent='▶ Activer la musique'})});
+aud.addEventListener('playing',()=>{mus.classList.remove('need');mus.textContent='♪ Pause'});
+aud.addEventListener('pause',()=>{if(!mus.classList.contains('need'))mus.textContent='▶ Musique'});
+loadAud(0);
 try{if(sessionStorage.getItem('auto')){sessionStorage.removeItem('auto');document.getElementById('open').click()}}catch(e){}
 </script>
 </body>
