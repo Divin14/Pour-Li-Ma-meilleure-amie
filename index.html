@@ -290,9 +290,9 @@ const aud=document.getElementById('aud'),mus=document.getElementById('mus');
 document.getElementById('open').onclick=()=>{
   document.getElementById('gate').classList.add('out');
   mus.classList.remove('hide');document.getElementById('nav').classList.remove('hide');if(P===1)setTimeout(()=>confetti(50),700);
-  want=true;aud.play().catch(()=>{mus.classList.add('need');mus.textContent='▶ Activer la musique'});
+  want=true;setupGain();aud.play().catch(()=>{mus.classList.add('need');mus.textContent='▶ Activer la musique'});
 };
-mus.onclick=()=>{mus.classList.remove('need');if(aud.paused){want=true;aud.play().catch(e=>{mus.textContent='✖ Audio ('+((e&&e.name)||'erreur')+')'})}else{want=false;aud.pause()}};
+mus.onclick=()=>{mus.classList.remove('need');if(aud.paused){want=true;setupGain();clearInterval(fadeT);setVol(1);aud.play().catch(e=>{mus.textContent='✖ Audio ('+((e&&e.name)||'erreur')+')'})}else{want=false;aud.pause()}};
 
 // Compte à rebours jusqu'au 31 octobre 2026
 const cd=document.getElementById('count');
@@ -362,20 +362,50 @@ aud.addEventListener('pause',()=>{if(!mus.classList.contains('need'))mus.textCon
 loadAud(0);
 try{if(sessionStorage.getItem('auto')){sessionStorage.removeItem('auto');document.getElementById('open').click()}}catch(e){}
 
-// Musique de fond <-> vidéos
-let resumeMusic=false;
+// Musique de fond <-> vidéos, avec fondu
+var ctx,gain,fadeT;
+function setupGain(){
+  try{
+    if(!ctx&&location.protocol!=='file:'){
+      const AC=window.AudioContext||window.webkitAudioContext;
+      if(AC){ctx=new AC();gain=ctx.createGain();ctx.createMediaElementSource(aud).connect(gain);gain.connect(ctx.destination)}
+    }
+    if(ctx&&ctx.state!=='running')ctx.resume();
+  }catch(e){ctx=gain=null}
+}
+function setVol(v){v=Math.max(0,Math.min(1,v));if(gain)gain.gain.value=v;else aud.volume=v}
+function getVol(){return gain?gain.gain.value:aud.volume}
+function fade(to,ms,done){
+  clearInterval(fadeT);
+  const from=getVol(),t0=performance.now();
+  fadeT=setInterval(()=>{
+    const k=Math.min(1,(performance.now()-t0)/ms);
+    setVol(from+(to-from)*k);
+    if(k>=1){clearInterval(fadeT);if(done)done()}
+  },40);
+}
+function anyVideoPlaying(){return [...document.querySelectorAll('video')].some(v=>!v.paused&&!v.ended)}
+function stopMusic(){fade(0,1200,()=>aud.pause())}
+function startMusic(){
+  if(!want||anyVideoPlaying())return;
+  clearInterval(fadeT);
+  setupGain();
+  if(aud.paused){setVol(0);aud.play().catch(()=>{mus.classList.add('need');mus.textContent='▶ Reprendre la musique'})}
+  fade(1,1800);
+}
 document.addEventListener('play',e=>{
   const v=e.target;if(v.tagName!=='VIDEO')return;
   document.querySelectorAll('video').forEach(o=>{if(o!==v&&!o.paused)o.pause()});
-  if(!aud.paused){resumeMusic=true;aud.pause()}
+  stopMusic();
 },true);
-const musicBack=e=>{
-  if(e.target.tagName!=='VIDEO'||!resumeMusic)return;
-  if([...document.querySelectorAll('video')].some(v=>!v.paused&&!v.ended))return;
-  resumeMusic=false;want=true;aud.play().catch(()=>{});
-};
+const musicBack=e=>{if(e.target.tagName==='VIDEO')startMusic()};
 document.addEventListener('pause',musicBack,true);
 document.addEventListener('ended',musicBack,true);
+['touchstart','click','keydown'].forEach(t=>document.addEventListener(t,e=>{
+  if(ctx&&ctx.state!=='running')ctx.resume();
+  if(e.target.closest&&e.target.closest('video'))return;
+  if(want&&aud.paused&&!anyVideoPlaying())startMusic();
+},{passive:true}));
 const vio=new IntersectionObserver(es=>es.forEach(x=>{
   const v=x.target;
   if(!x.isIntersecting&&!v.paused&&!document.fullscreenElement&&!v.webkitDisplayingFullscreen)v.pause();
